@@ -1,0 +1,89 @@
+import kotlin.random.Random
+
+class GeneradorSeries(private val consola: Consola) {
+    private var max = 0
+    private var min = 0
+
+
+    private fun generarRangoAleatorio(){
+        while (min +30 > max){
+            max =  Random.nextInt(1,100)
+            min =  Random.nextInt(1,100)
+        }
+    }
+
+    fun generarSerie(){
+        generarRangoAleatorio()
+        val num :Int = consola.leerNum(consola.mostrar("Inserte un número [$min-$max] -> ").toString())
+
+        if (max - num < num -min){
+            serieCreciente(num)
+        }else serieDecreciente(num)
+    }
+
+
+    private fun serieCreciente(numero:Int){
+        var num=numero
+        var intervalo = 1
+        val suma: MutableList<Int> = mutableListOf(num)
+        var total = 0
+        consola.mostrar("$num (0)",true)
+        num++
+
+        while (num != max){
+            suma.add(num)
+
+            for (elemento in suma){
+                consola.mostrar("$elemento+")
+            }
+//            consola.mostrar(suma.split("+")) no me a dejado implementarlo por lo que me sale al final el +
+
+            consola.mostrar("($intervalo)",true)
+            total += num
+            num++
+            intervalo++
+        }
+
+        consola.mostrar("Suma => $total")
+
+    }
+
+    private fun serieDecreciente(numero : Int){
+        var num=numero
+        var intervalo = 1
+        val suma: MutableList<Int> = mutableListOf()
+        var total = 0
+        var num2 = numero
+
+        while (num2 != min){
+            suma.add(num2)
+            num2--
+            total += num2
+        }
+
+        while (num != min){
+//            suma.remove(numero)
+
+            if (intervalo < 10) {
+                consola.mostrar("0$intervalo -> ")
+            }else consola.mostrar("$intervalo -> ")
+
+            for (elemento in suma){
+                consola.mostrar("$elemento+")
+            }
+
+            consola.mostrar(" = $total", true)
+            suma.removeLast()
+            total -= num
+            num--
+            intervalo++
+        }
+
+//        for (number in suma ){
+//            total += number
+//        }
+
+    }
+}
+
+
