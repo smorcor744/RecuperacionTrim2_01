@@ -1,24 +1,24 @@
 
 
-open class Menu:IMenu, Consola(){
+open class Menu(private val consola: Consola):IMenu{
 
     override fun generarSerie() {
         GeneradorSeries.generarSerie()
-        GestorMenu().opciones()
+        GestorMenu(consola).opciones()
 
     }
 
     override fun jugarAhorcado() {
-        Ahorcado().jugar()
-        GestorMenu().opciones()
+        Ahorcado(consola).jugar()
+        GestorMenu(consola).opciones()
 
     }
 
     override fun mostrarMenu() {
-        Consola().mostrar("1. Generar serie",true)
-        Consola().mostrar("2. Jugar al ahorcado",true)
-        Consola().mostrar("3. Salir",true)
-        Consola().mostrar("Por favor. seleciona una opción: ")
+        consola.mostrar("1. Generar serie",true)
+        consola.mostrar("2. Jugar al ahorcado",true)
+        consola.mostrar("3. Salir",true)
+        consola.mostrar("Por favor. seleciona una opción: ")
 
 
 

@@ -4,7 +4,7 @@
  *
  */
 
-class Ahorcado:Consola() {
+class Ahorcado(private val consola: Consola){
 
     //Funcion que empieza el juego
     fun jugar(){
@@ -24,9 +24,9 @@ class Ahorcado:Consola() {
 
             while (espacios.contains("_") && intentos > 0) {
 
-                Consola().mostrar("Adivina la palabra: ${espacios.joinToString(" ")}",true)
+                consola.mostrar("Adivina la palabra: ${espacios.joinToString(" ")}",true)
 
-                val letra = Consola().leerLetra(Consola().mostrar("Intenta con una letra:", true).toString())
+                val letra = consola.leerLetra(consola.mostrar("Intenta con una letra:", true).toString())
 
                 if (letrasPalabras.contains(letra)) {
 // Esta son diferentes formas de sustituir _ por la letra que as acertado
@@ -50,16 +50,16 @@ class Ahorcado:Consola() {
 
                 } else {
                     intentos--
-                    Consola().mostrar("Incorrecto! Intentos restantes: $intentos",true )
+                    consola.mostrar("Incorrecto! Intentos restantes: $intentos",true )
                 }
             }
 
-            if ( intentos == 0){Consola().mostrar("Lo siento! Se acabaron tus intentos. La palabra era: \"$palabras\"",true)
-                GestorMenu().opciones()
+            if ( intentos == 0){consola.mostrar("Lo siento! Se acabaron tus intentos. La palabra era: \"$palabras\"",true)
+                GestorMenu(consola).opciones()
 
             }else {
-                Consola().mostrar("¡Felicidades! Has adivinado la palabra: $palabras")
-                GestorMenu().opciones()
+                consola.mostrar("¡Felicidades! Has adivinado la palabra: $palabras")
+                GestorMenu(consola).opciones()
             }
 
     }

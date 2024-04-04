@@ -1,6 +1,6 @@
 
 
-class GestorMenu(private val consola: Consola):Menu() {
+class GestorMenu(private val consola: Consola):Menu(consola) {
     fun opciones(){
         val numero = consola.leerNum(mostrarMenu().toString())
         when (numero){
