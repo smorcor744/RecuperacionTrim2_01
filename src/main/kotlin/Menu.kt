@@ -1,7 +1,6 @@
-import kotlin.random.Random
 
 
-open class Menu():IMenu, Consola(){
+open class Menu:IMenu, Consola(){
 
     override fun generarSerie() {
         GeneradorSeries.generarSerie()
