@@ -9,6 +9,17 @@ open class Consola: IEntradaSalida {
         return readln()
     }
 
+    override fun leerLetra(mensaje: String): Char {
+        var letra: String
+        while (true) {
+            mostrar(mensaje)
+            letra = readln()
+            if (letra.length == 1)
+                return letra[0]
+        }
+    }
+
+
 
     override fun leerNum(mensaje: String): Int {
         var num: Int

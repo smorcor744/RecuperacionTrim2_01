@@ -3,5 +3,8 @@ interface IEntradaSalida {
 
     fun leerNum(mensaje: String):Int
 
+    fun leerLetra(mensaje: String):Char
+
+
     fun leer(): String
 }

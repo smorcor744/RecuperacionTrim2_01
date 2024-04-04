@@ -26,25 +26,24 @@ class GeneradorSeries(private val consola: Consola) {
         var num=numero
         var intervalo = 1
         val suma: MutableList<Int> = mutableListOf(num)
-        var total = 0
+        var total = num
         consola.mostrar("$num (0)",true)
         num++
 
         while (num != max){
             suma.add(num)
 
-            for (elemento in suma){
-                consola.mostrar("$elemento+")
-            }
-//            consola.mostrar(suma.split("+")) no me a dejado implementarlo por lo que me sale al final el +
+            val sumaStr = suma.joinToString("+")
+            consola.mostrar(sumaStr)
 
-            consola.mostrar("($intervalo)",true)
-            total += num
+
+            consola.mostrar(" ($intervalo)",true)
+            total += suma.sumOf { it }
             num++
             intervalo++
         }
 
-        consola.mostrar("Suma => $total")
+        consola.mostrar("Suma => $total",true)
 
     }
 
@@ -62,26 +61,21 @@ class GeneradorSeries(private val consola: Consola) {
         }
 
         while (num != min){
-//            suma.remove(numero)
+            suma.sumOf { it }
 
             if (intervalo < 10) {
                 consola.mostrar("0$intervalo -> ")
             }else consola.mostrar("$intervalo -> ")
 
-            for (elemento in suma){
-                consola.mostrar("$elemento+")
-            }
+            val sumaStr = suma.joinToString("+")
+            consola.mostrar(sumaStr)
 
             consola.mostrar(" = $total", true)
             suma.removeLast()
-            total -= num
+            total = suma.sumOf { it }
             num--
             intervalo++
         }
-
-//        for (number in suma ){
-//            total += number
-//        }
 
     }
 }

@@ -15,6 +15,6 @@ fun leerFicheroJSON(ruta: String): List<String> {
 }
 
 fun obtenerPalabraAleatoria(): String {
-    val palabras = leerFicheroTexto(RUTA_TEXTO)
+    val palabras = leerFicheroJSON(RUTA_JSON)
     return palabras.random()
 }
