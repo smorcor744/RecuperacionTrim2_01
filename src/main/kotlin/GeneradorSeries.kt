@@ -14,8 +14,10 @@ object GeneradorSeries {
 
     fun generarSerie(){
         generarRangoAleatorio()
-        val num :Int = Consola().leerNum(Consola().mostrar("Inserte un número [$min-$max] -> ").toString())
-
+        var num = 0
+        while (num in (max + 1)..<min) {
+             num = Consola().leerNum(Consola().mostrar("Inserte un número [$min-$max] -> ").toString())
+        }
         if (max - num < num -min){
             serieCreciente(num)
         }else serieDecreciente(num)
