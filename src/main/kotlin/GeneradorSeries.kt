@@ -1,6 +1,6 @@
 import kotlin.random.Random
 
-class GeneradorSeries(private val consola: Consola) {
+object GeneradorSeries {
     private var max = 0
     private var min = 0
 
@@ -14,7 +14,7 @@ class GeneradorSeries(private val consola: Consola) {
 
     fun generarSerie(){
         generarRangoAleatorio()
-        val num :Int = consola.leerNum(consola.mostrar("Inserte un número [$min-$max] -> ").toString())
+        val num :Int = Consola().leerNum(Consola().mostrar("Inserte un número [$min-$max] -> ").toString())
 
         if (max - num < num -min){
             serieCreciente(num)
@@ -27,23 +27,23 @@ class GeneradorSeries(private val consola: Consola) {
         var intervalo = 1
         val suma: MutableList<Int> = mutableListOf(num)
         var total = num
-        consola.mostrar("$num (0)",true)
+        Consola().mostrar("$num (0)",true)
         num++
 
         while (num != max){
             suma.add(num)
 
             val sumaStr = suma.joinToString("+")
-            consola.mostrar(sumaStr)
+            Consola().mostrar(sumaStr)
 
 
-            consola.mostrar(" ($intervalo)",true)
+            Consola().mostrar(" ($intervalo)",true)
             total += suma.sumOf { it }
             num++
             intervalo++
         }
 
-        consola.mostrar("Suma => $total",true)
+        Consola().mostrar("Suma => $total",true)
 
     }
 
@@ -64,13 +64,13 @@ class GeneradorSeries(private val consola: Consola) {
             suma.sumOf { it }
 
             if (intervalo < 10) {
-                consola.mostrar("0$intervalo -> ")
-            }else consola.mostrar("$intervalo -> ")
+                Consola().mostrar("0$intervalo -> ")
+            }else Consola().mostrar("$intervalo -> ")
 
             val sumaStr = suma.joinToString("+")
-            consola.mostrar(sumaStr)
+            Consola().mostrar(sumaStr)
 
-            consola.mostrar(" = $total", true)
+            Consola().mostrar(" = $total", true)
             suma.removeLast()
             total = suma.sumOf { it }
             num--

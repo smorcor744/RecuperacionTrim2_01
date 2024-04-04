@@ -1,13 +1,13 @@
 
 
-class GestorMenu(consola: Consola):Menu(consola) {
+class GestorMenu:Menu() {
     fun opciones(){
-        val numero = consola.leerNum(mostrarMenu().toString())
+        val numero = Consola().leerNum(mostrarMenu().toString())
         when (numero){
             1 -> generarSerie()
             2 -> jugarAhorcado()
-            3 -> consola.mostrar("Saliendo...")
-            else -> consola.mostrar("Numero no valido",true)
+            3 -> Consola().mostrar("Saliendo...")
+            else -> Consola().mostrar("Numero no valido",true)
         }
 
     }

@@ -1,4 +1,4 @@
-class Ahorcado(private val consola: Consola) {
+class Ahorcado:Consola() {
     fun jugar(){
         val palabra = obtenerPalabraAleatoria()
         val letrasPalabra = palabra.toList()
@@ -15,9 +15,9 @@ class Ahorcado(private val consola: Consola) {
 
             while (espacios.contains("_") && intentos > 0) {
 
-                consola.mostrar("Adivina la palabra: ${espacios.joinToString(" ")}",true)
+                Consola().mostrar("Adivina la palabra: ${espacios.joinToString(" ")}",true)
 
-                val letra = consola.leerLetra(consola.mostrar("Intenta con una letra:", true).toString())
+                val letra = Consola().leerLetra(Consola().mostrar("Intenta con una letra:", true).toString())
 
                 if (letrasPalabras.contains(letra)) {
                     letrasPalabras.forEachIndexed { index, char ->
@@ -28,16 +28,16 @@ class Ahorcado(private val consola: Consola) {
 
                 } else {
                     intentos--
-                    consola.mostrar("Incorrecto! Intentos restantes: $intentos",true )
+                    Consola().mostrar("Incorrecto! Intentos restantes: $intentos",true )
                 }
             }
 
-            if ( intentos == 0){consola.mostrar("Lo siento! Se acabaron tus intentos. La palabra era: \"$palabras\"",true)
-                GestorMenu(consola).opciones()
+            if ( intentos == 0){Consola().mostrar("Lo siento! Se acabaron tus intentos. La palabra era: \"$palabras\"",true)
+                GestorMenu().opciones()
 
             }else {
-                consola.mostrar("¡Felicidades! Has adivinado la palabra: $palabras")
-                GestorMenu(consola).opciones()
+                Consola().mostrar("¡Felicidades! Has adivinado la palabra: $palabras")
+                GestorMenu().opciones()
             }
 
     }
